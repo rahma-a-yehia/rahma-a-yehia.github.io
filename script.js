@@ -179,12 +179,27 @@ updateWhatsApp();
 const faceCanvas = $("#stellar-face");
 if (faceCanvas) {
   const ctx = faceCanvas.getContext("2d");
-  const points = [];
+  const points = [], mesh = [], triangles = [];
   let width = 0, height = 0, dpr = 1, targetYaw = -.12, targetPitch = .02, yaw = -.12, pitch = .02;
   const add = (x, y, z, size = 1, glow = 0) => points.push({ x, y, z, size, glow, phase: Math.random() * Math.PI * 2 });
 
-  // Head shell: denser at the front, with a tapered jaw and subtly extended cranium.
-  for (let i = 0; i < 1250; i++) {
+  const headPoint = (u, v) => {
+    const sy = Math.cos(v), ring = Math.sin(v), jaw = .76 + .24 * Math.max(0, (sy + .12) / 1.12);
+    let x = Math.cos(u) * ring * 1.03 * jaw;
+    let y = sy * 1.42;
+    let z = Math.sin(u) * ring * (.9 + .1 * Math.max(0, sy));
+    if (z > 0) z += .11 * Math.exp(-x*x*5) * Math.exp(-(y+.02)*(y+.02)*2.5);
+    return {x,y,z};
+  };
+  // A real triangulated shell gives the head weight, reflections and mechanical volume.
+  const rows=34, cols=48;
+  for(let r=0;r<=rows;r++) for(let c=0;c<cols;c++) mesh.push(headPoint(c/cols*Math.PI*2,(r+.18)/(rows+.36)*Math.PI));
+  for(let r=0;r<rows;r++) for(let c=0;c<cols;c++) {
+    const n=c===cols-1?0:c+1, a=r*cols+c, b=r*cols+n, d=(r+1)*cols+c, e=(r+1)*cols+n;
+    triangles.push([a,d,b],[b,d,e]);
+  }
+  // Sparse luminous sensor nodes sit on top of the metal, rather than replacing it.
+  for (let i = 0; i < 290; i++) {
     const v = Math.acos(1 - 2 * Math.random());
     const u = Math.random() * Math.PI * 2;
     const sy = Math.cos(v), ring = Math.sin(v);
@@ -193,7 +208,7 @@ if (faceCanvas) {
     let y = sy * 1.42;
     let z = Math.sin(u) * ring * (.9 + .1 * Math.max(0, sy));
     if (z > 0) z += .11 * Math.exp(-x*x*5) * Math.exp(-(y+.02)*(y+.02)*2.5);
-    add(x, y, z, .65 + Math.random() * 1.15, Math.random() > .94 ? 1 : 0);
+    add(x, y, z+.018, .42 + Math.random() * .62, Math.random() > .975 ? 1 : 0);
   }
 
   // Elegant neck emerging from the jaw.
@@ -203,20 +218,20 @@ if (faceCanvas) {
     add(Math.cos(a) * r, -1.25 - t * .92, Math.sin(a) * r * .76, .7 + Math.random(), Math.random() > .96 ? 1 : 0);
   }
 
-  const curve = (count, fn, size = 1.35) => {
-    for (let i = 0; i < count; i++) { const p = fn(i / (count - 1)); add(p[0], p[1], p[2], size, 1); }
+  const curve = (count, fn, size = .72) => {
+    for (let i = 0; i < count; i++) { const p = fn(i / (count - 1)); add(p[0], p[1], p[2], size, 0); }
   };
   // Brows and almond-shaped eyes sit just above the shell so the expression survives rotation.
   [-1, 1].forEach(side => {
     curve(48, t => { const x = side * (.18 + t * .52); return [x, .38 + .12 * Math.sin(t*Math.PI), .9 + .08*Math.sin(t*Math.PI)]; });
-    curve(66, t => { const a=t*Math.PI*2; return [side*.43 + Math.cos(a)*.25, .17 + Math.sin(a)*.105, .99 + .035*Math.cos(a)]; }, 1.2);
-    add(side*.43, .17, 1.045, 3.1, 1);
+    curve(66, t => { const a=t*Math.PI*2; return [side*.43 + Math.cos(a)*.25, .17 + Math.sin(a)*.105, 1.025 + .035*Math.cos(a)]; }, .8);
+    add(side*.43, .17, 1.075, 3.8, 1);
   });
   // Nose bridge, nostrils, lips and jaw seam.
-  curve(55, t => [.035*Math.sin(t*Math.PI*2), .32-t*.72, 1.04 + t*.18], 1.25);
-  curve(28, t => [(t-.5)*.38, -.43 + .045*Math.cos((t-.5)*Math.PI*2), 1.105-Math.abs(t-.5)*.12], 1.2);
-  curve(74, t => { const a=t*Math.PI*2; return [Math.cos(a)*.34, -.69 + Math.sin(a)*.075, 1.02 + .025*Math.cos(a)]; }, 1.35);
-  curve(90, t => { const a=Math.PI*.14+t*Math.PI*.72; return [Math.cos(a)*.84, -.41-Math.sin(a)*.92, .56+.17*Math.sin(a)]; }, 1.05);
+  curve(55, t => [.035*Math.sin(t*Math.PI*2), .32-t*.72, 1.04 + t*.18], .62);
+  curve(28, t => [(t-.5)*.38, -.43 + .045*Math.cos((t-.5)*Math.PI*2), 1.105-Math.abs(t-.5)*.12], .58);
+  curve(74, t => { const a=t*Math.PI*2; return [Math.cos(a)*.34, -.69 + Math.sin(a)*.075, 1.02 + .025*Math.cos(a)]; }, .68);
+  curve(90, t => { const a=Math.PI*.14+t*Math.PI*.72; return [Math.cos(a)*.84, -.41-Math.sin(a)*.92, .56+.17*Math.sin(a)]; }, .54);
 
   const resizeFace = () => {
     const rect = faceCanvas.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2); width = rect.width; height = rect.height;
@@ -232,7 +247,17 @@ if (faceCanvas) {
   const renderFace = time => {
     yaw += (targetYaw-yaw)*.055; pitch += (targetPitch-pitch)*.055;
     ctx.clearRect(0,0,width,height); const cy=Math.cos(yaw), sy=Math.sin(yaw), cp=Math.cos(pitch), sp=Math.sin(pitch);
-    const scale=Math.min(width*.235,height*.205), projected=[];
+    const scale=Math.min(width*.235,height*.205), projected=[], projectedMesh=[];
+    const project = p => { const x=p.x*cy+p.z*sy, z=-p.x*sy+p.z*cy, y=p.y*cp-z*sp, rz=p.y*sp+z*cp, perspective=3.7/(3.7-rz*.18); return {x:width*.51+x*scale*perspective,y:height*.47-y*scale*perspective,z:rz}; };
+    mesh.forEach(p=>projectedMesh.push(project(p)));
+    const painted=triangles.map(t=>{const a=projectedMesh[t[0]],b=projectedMesh[t[1]],c=projectedMesh[t[2]];return {a,b,c,z:(a.z+b.z+c.z)/3};}).sort((a,b)=>a.z-b.z);
+    painted.forEach((f,i)=>{
+      const ax=f.b.x-f.a.x, ay=f.b.y-f.a.y, bx=f.c.x-f.a.x, by=f.c.y-f.a.y, facing=Math.max(0,Math.min(1,Math.abs(ax*by-ay*bx)/90));
+      const light=Math.max(0,Math.min(1,.38+f.z*.25+(f.a.x/width-.5)*-.18));
+      ctx.beginPath();ctx.moveTo(f.a.x,f.a.y);ctx.lineTo(f.b.x,f.b.y);ctx.lineTo(f.c.x,f.c.y);ctx.closePath();
+      ctx.fillStyle=`rgba(${Math.round(29+light*52)},${Math.round(25+light*35)},${Math.round(34+light*51)},${.93})`;ctx.fill();
+      if(i%3===0){ctx.strokeStyle=`rgba(242,166,196,${.025+facing*.055})`;ctx.lineWidth=.35;ctx.stroke();}
+    });
     points.forEach(p => {
       const x=p.x*cy+p.z*sy, z=-p.x*sy+p.z*cy, y=p.y*cp-z*sp, rz=p.y*sp+z*cp;
       const perspective=3.7/(3.7-rz*.18);
@@ -242,7 +267,7 @@ if (faceCanvas) {
     projected.forEach(p => {
       const depth=Math.max(.13,Math.min(1,(p.z+1.25)/2.5)); const twinkle=.78+.22*Math.sin(time*.0016+p.phase);
       ctx.beginPath(); ctx.arc(p.x,p.y,p.r*(p.glow?1.25:1),0,Math.PI*2);
-      ctx.fillStyle=p.glow?`rgba(255,218,235,${.58+.4*depth*twinkle})`:`rgba(242,166,196,${.16+.66*depth})`;
+      ctx.fillStyle=p.glow?`rgba(255,218,235,${.72+.25*depth*twinkle})`:`rgba(250,185,213,${.1+.46*depth})`;
       if(p.glow){ctx.shadowColor="#ffafd2";ctx.shadowBlur=8;} else ctx.shadowBlur=0; ctx.fill();
     });
     ctx.shadowBlur=0; requestAnimationFrame(renderFace);
