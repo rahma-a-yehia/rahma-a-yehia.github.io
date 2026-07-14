@@ -126,6 +126,11 @@ h1 em, h2 em, h3 em { color: var(--pink); font-weight: inherit; }
 .service-request span { margin-left: 16px; }
 .service-card__visual { position: absolute; top: 42px; right: 40px; width: 150px; height: 120px; opacity: .7; transition: opacity .3s, transform .5s var(--ease); }
 .service-card:hover .service-card__visual { opacity: 1; transform: rotate(2deg) scale(1.05); }
+.service-icon { display: grid; place-items: center; width: 122px; height: 104px; color: var(--rose); opacity: .78; }
+.service-icon svg { width: 100%; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; }
+.service-icon svg .icon-detail { stroke-dasharray: 3 4; opacity: .65; }
+.service-icon svg circle { fill: var(--paper); stroke: currentColor; }
+.service-icon--custom { top: 54px; right: auto; left: 48px; width: 128px; height: 112px; }
 .visual-cad__cube { position: absolute; inset: 18px 30px 10px; border: 1px solid var(--rose); transform: skewY(-22deg); }
 .visual-cad::before, .visual-cad::after, .visual-cad i, .visual-cad b { content: ""; position: absolute; background: var(--rose); opacity: .65; }
 .visual-cad::before { top: 0; bottom: 0; left: 50%; width: 1px; }
@@ -298,7 +303,7 @@ h1 em, h2 em, h3 em { color: var(--pink); font-weight: inherit; }
   .service-card { min-height: 390px; padding: 32px; }
   .service-card--wide { grid-template-columns: 120px 1fr; }
   .service-card--wide .service-request { grid-column: 2; justify-self: start; }
-  .visual-butterfly { left: 20px; }
+  .service-icon--custom { left: 28px; }
   .work-card, .work-card--reverse { grid-template-columns: 1fr; gap: 35px; }
   .work-card--reverse .work-card__art { order: 0; }
   .work-card__copy { max-width: 650px; }
@@ -331,7 +336,7 @@ h1 em, h2 em, h3 em { color: var(--pink); font-weight: inherit; }
   .service-card--wide { grid-column: auto; display: block; min-height: 430px; }
   .service-card--wide .service-card__number { margin-bottom: 100px; }
   .service-card__visual { right: 24px; top: 28px; }
-  .visual-butterfly { left: auto; }
+  .service-icon--custom { right: 24px; left: auto; }
   .work-list { gap: 65px; }
   .work-card__art { min-height: 370px; }
   .work-card__image { height: 370px; }
