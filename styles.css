@@ -84,6 +84,18 @@ h1 em, h2 em, h3 em { color: var(--pink); font-weight: inherit; }
 .hero-art__object { stroke-dasharray: 1100; stroke-dashoffset: 1100; animation: draw 3.2s 1.4s var(--ease) forwards; }
 .hero-art__points { animation: pulse 2.6s infinite; transform-origin: center; }
 .hero-art__caption { display: flex; justify-content: space-between; margin-top: -34px; padding: 0 26px; color: rgba(255,248,251,.45); font-size: 8px; letter-spacing: .22em; }
+.hero-art--face { height: min(74vh, 650px); min-height: 520px; cursor: crosshair; isolation: isolate; }
+.hero-art--face::before { inset: 15% 3% 8%; background: radial-gradient(circle, rgba(242,166,196,.18), rgba(116,61,105,.07) 38%, transparent 70%); }
+#stellar-face { position: relative; z-index: 2; display: block; width: 100%; height: 100%; touch-action: none; }
+.face-hud { position: absolute; z-index: 3; top: 50%; left: 50%; width: 91%; height: 76%; transform: translate(-50%,-50%); border: 1px solid rgba(242,166,196,.09); border-radius: 50%; pointer-events: none; }
+.face-hud::before, .face-hud::after { content: ""; position: absolute; background: rgba(242,166,196,.13); }
+.face-hud::before { left: -5%; right: -5%; top: 50%; height: 1px; }
+.face-hud::after { top: -5%; bottom: -5%; left: 50%; width: 1px; }
+.face-hud i { position: absolute; width: 34px; height: 34px; border-color: rgba(255,212,228,.36); }
+.face-hud i:first-child { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
+.face-hud i:last-child { right: -1px; bottom: -1px; border-right: 1px solid; border-bottom: 1px solid; }
+.face-hud span { position: absolute; top: 20%; left: -5%; padding: 5px 8px; background: var(--ink); color: rgba(255,248,251,.48); font-size: 7px; letter-spacing: .2em; }
+.hero-art--face .hero-art__caption { position: absolute; z-index: 4; right: 0; bottom: 18px; left: 0; margin: 0; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 @keyframes artFloat { 50% { transform: translateY(-12px) rotate(.5deg); } }
 @keyframes pulse { 50% { opacity: .45; } }
@@ -309,7 +321,8 @@ h1 em, h2 em, h3 em { color: var(--pink); font-weight: inherit; }
   .hero__actions { display: grid; }
   .hero__actions .button { width: 100%; }
   .hero__proof { display: grid; gap: 8px; }
-  .hero-art { width: 95vw; margin: -25px -20vw -40px auto; opacity: .64; }
+  .hero-art { width: 95vw; margin: -25px -20vw -40px auto; opacity: .88; }
+  .hero-art--face { height: 500px; min-height: 500px; }
   .section-heading { margin-bottom: 50px; }
   .section-heading h2 { font-size: 3.15rem; }
   .service-grid { grid-template-columns: 1fr; }
