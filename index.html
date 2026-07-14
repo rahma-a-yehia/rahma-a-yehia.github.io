@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0b0f" />
+    <meta
+      name="description"
+      content="El Studio turns ideas into functional, beautiful, build-ready outcomes through engineering design, 3D printing, visual design, training, and custom creative projects."
+    />
+    <meta property="og:title" content="El Studio — From idea to ideal" />
+    <meta
+      property="og:description"
+      content="Creative engineering, design, prototyping, and practical training."
+    />
+    <meta property="og:type" content="website" />
+    <title>El Studio — From idea to ideal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="intro" id="intro" aria-label="El Studio introduction">
+      <button class="intro__skip" id="intro-skip" type="button">Skip intro</button>
+      <div class="intro__grid" aria-hidden="true"></div>
+      <div class="intro__content">
+        <div class="monogram monogram--intro" aria-hidden="true">
+          <span>E</span><i></i><span>S</span>
+        </div>
+        <p class="intro__name">EL STUDIO</p>
+        <p class="intro__tagline">From idea to ideal.</p>
+      </div>
+    </div>
+
+    <header class="site-header" id="site-header">
+      <a class="brand" href="#home" aria-label="El Studio home">
+        <span class="brand__mark" aria-hidden="true">ES</span>
+        <span class="brand__wordmark">El Studio</span>
+      </a>
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open navigation"
+      >
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#start">Start a project</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="home">
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="hero__orb hero__orb--one" aria-hidden="true"></div>
+        <div class="hero__orb hero__orb--two" aria-hidden="true"></div>
+        <div class="container hero__layout">
+          <div class="hero__copy reveal">
+            <p class="eyebrow"><span></span> Creative engineering studio</p>
+            <h1>Ideas deserve more than <em>imagination.</em></h1>
+            <p class="hero__lede">
+              We turn your concepts into functional, beautiful, build-ready outcomes —
+              where engineering precision meets creative instinct.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--pink" href="#services">Explore services</a>
+              <a class="button button--ghost" href="#start">Start your project <span>↗</span></a>
+            </div>
+            <div class="hero__proof" aria-label="Our values">
+              <span>01 — Thoughtful</span>
+              <span>02 — Functional</span>
+              <span>03 — Distinctive</span>
+            </div>
+          </div>
+
+          <div class="hero-art reveal" aria-label="Abstract engineering drawing">
+            <svg viewBox="0 0 560 640" role="img" aria-label="A conceptual product drawn with construction lines">
+              <defs>
+                <linearGradient id="pinkStroke" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffd4e4" />
+                  <stop offset="1" stop-color="#f2a6c4" />
+                </linearGradient>
+                <filter id="softGlow">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+              <g class="hero-art__construction" fill="none" stroke="rgba(255,248,251,.2)" stroke-width="1">
+                <circle cx="280" cy="320" r="226" />
+                <circle cx="280" cy="320" r="162" />
+                <line x1="34" y1="320" x2="526" y2="320" />
+                <line x1="280" y1="74" x2="280" y2="566" />
+                <path d="M86 190 474 450M86 450 474 190" />
+              </g>
+              <g class="hero-art__object" fill="none" stroke="url(#pinkStroke)" stroke-linecap="round">
+                <path d="M196 188C237 133 330 139 365 206c31 59 3 114-30 146-25 24-31 59-32 95h-48c-1-36-9-69-34-94-35-34-62-104-25-165Z" stroke-width="3" />
+                <path d="M230 458h98M238 478h82M249 497h60" stroke-width="3" />
+                <path d="M253 447c-2-60-10-97-41-125M306 447c1-59 11-98 43-125" stroke-width="1.5" />
+                <path d="M229 271c26-36 78-44 112-9" stroke-width="2" filter="url(#softGlow)" />
+              </g>
+              <g fill="#f2a6c4" class="hero-art__points">
+                <circle cx="196" cy="188" r="5" /><circle cx="365" cy="206" r="5" />
+                <circle cx="221" cy="353" r="4" /><circle cx="335" cy="352" r="4" />
+              </g>
+              <g class="hero-art__labels" fill="#fff8fb" font-family="DM Sans, sans-serif" font-size="10" letter-spacing="2">
+                <text x="54" y="183">CONCEPT / 01</text>
+                <text x="394" y="455">REFINE</text>
+                <text x="394" y="471">BUILD</text>
+                <text x="394" y="487">DELIVER</text>
+              </g>
+            </svg>
+            <div class="hero-art__caption">
+              <span>CONCEPT STUDY</span>
+              <span>FORM + FUNCTION</span>
+            </div>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#services"><span>Scroll to discover</span><i></i></a>
+      </section>
+
+      <section class="services section" id="services">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div>
+              <p class="eyebrow eyebrow--dark"><span></span> What we create</p>
+              <h2>One studio.<br /><em>Many ways to build.</em></h2>
+            </div>
+            <p>
+              Choose the kind of support your idea needs. Every project begins with
+              listening, then takes shape through a process made for you.
+            </p>
+          </div>
+
+          <div class="service-grid">
+            <article class="service-card service-card--featured reveal">
+              <div class="service-card__visual visual-cad" aria-hidden="true">
+                <span class="visual-cad__cube"></span><i></i><b></b>
+              </div>
+              <div class="service-card__number">01</div>
+              <h3>Engineering Design <em>&amp; CAD</em></h3>
+              <p>Product design, mechanical modeling, technical drawings, surface modeling, and reverse engineering.</p>
+              <button class="service-request" type="button" data-service="Engineering Design & CAD">Request this service <span>↗</span></button>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-card__visual visual-layers" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <div class="service-card__number">02</div>
+              <h3>3D <em>Printing</em></h3>
+              <p>Print-ready optimization, prototype guidance, design validation, and reliable STL preparation.</p>
+              <button class="service-request" type="button" data-service="3D Printing">Request this service <span>↗</span></button>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-card__visual visual-type" aria-hidden="true"><span>A</span><span>✦</span></div>
+              <div class="service-card__number">03</div>
+              <h3>Graphic &amp; <em>Visual Design</em></h3>
+              <p>Brand visuals, presentations, creative direction, and visual storytelling that makes ideas clear.</p>
+              <button class="service-request" type="button" data-service="Graphic & Visual Design">Request this service <span>↗</span></button>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-card__visual visual-orbit" aria-hidden="true"><i></i><i></i><span>SW</span></div>
+              <div class="service-card__number">04</div>
+              <h3>SOLIDWORKS <em>Training</em></h3>
+              <p>Practical, personalized learning experiences for individuals and teams — built around real work.</p>
+              <button class="service-request" type="button" data-service="SOLIDWORKS Training">Request this service <span>↗</span></button>
+            </article>
+
+            <article class="service-card service-card--wide reveal">
+              <div class="service-card__visual visual-butterfly" aria-hidden="true"><i></i><i></i><span></span></div>
+              <div class="service-card__number">05</div>
+              <div>
+                <h3>Custom Creative <em>Projects</em></h3>
+                <p>Handmade pieces, meaningful gifts, and artistic engineering concepts designed around a story.</p>
+              </div>
+              <button class="service-request" type="button" data-service="Custom Creative Project">Request this service <span>↗</span></button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="work section section--dark" id="work">
+        <div class="container">
+          <div class="section-heading section-heading--dark reveal">
+            <div>
+              <p class="eyebrow"><span></span> Selected concepts</p>
+              <h2>Stories shaped<br /><em>into objects.</em></h2>
+            </div>
+            <p>Personal concepts where engineering and emotion share the same blueprint.</p>
+          </div>
+
+          <div class="work-list">
+            <article class="work-card reveal">
+              <div class="work-card__art art-butterfly" aria-hidden="true">
+                <div class="art-butterfly__wing art-butterfly__wing--left"></div>
+                <div class="art-butterfly__wing art-butterfly__wing--right"></div>
+                <div class="art-butterfly__body"></div>
+                <div class="art-butterfly__orb"></div>
+                <span>01 / KINETIC LIGHT</span>
+              </div>
+              <div class="work-card__copy">
+                <p class="work-card__index">PROJECT 01</p>
+                <h3>Butterfly Effect</h3>
+                <p>A kinetic night light that turns movement, music, and illuminated forms into a quiet emotional ritual.</p>
+                <div class="tags"><span>Product Design</span><span>Mechanisms</span><span>Lighting</span></div>
+              </div>
+            </article>
+
+            <article class="work-card work-card--reverse reveal">
+              <div class="work-card__art art-music" aria-hidden="true">
+                <div class="art-music__stage"></div><div class="art-music__gift"></div>
+                <div class="art-music__dome"></div><div class="art-music__note">♪</div>
+                <span>02 / MECHANICAL STORY</span>
+              </div>
+              <div class="work-card__copy">
+                <p class="work-card__index">PROJECT 02</p>
+                <h3>Birthday Music Box</h3>
+                <p>A miniature mechanical scene designed to preserve a meaningful moment through movement and detail.</p>
+                <div class="tags"><span>Concept Design</span><span>3D Printing</span><span>Storytelling</span></div>
+              </div>
+            </article>
+
+            <article class="work-card reveal">
+              <div class="work-card__art art-scan" aria-hidden="true">
+                <div class="art-scan__mesh"></div><div class="art-scan__solid"></div><div class="art-scan__beam"></div>
+                <span>03 / REVERSE ENGINEERING</span>
+              </div>
+              <div class="work-card__copy">
+                <p class="work-card__index">PROJECT 03</p>
+                <h3>From Scan to Solid</h3>
+                <p>Transforming physical geometry into clean, editable CAD — ready for refinement, manufacture, or a new life.</p>
+                <div class="tags"><span>3D Scanning</span><span>CAD Reconstruction</span><span>Manufacturing</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="process section" id="process">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div>
+              <p class="eyebrow eyebrow--dark"><span></span> The process</p>
+              <h2>Clear steps.<br /><em>Creative room.</em></h2>
+            </div>
+            <p>A focused path keeps the project grounded while leaving space for the unexpected idea that makes it yours.</p>
+          </div>
+          <ol class="process-list">
+            <li class="reveal"><span>01</span><div><h3>Share the idea</h3><p>Tell us what you imagine, what it needs to do, and why it matters.</p></div></li>
+            <li class="reveal"><span>02</span><div><h3>Define the direction</h3><p>We shape the brief, scope, timeline, and the clearest route forward.</p></div></li>
+            <li class="reveal"><span>03</span><div><h3>Design &amp; refine</h3><p>The concept becomes tangible through thoughtful iterations and feedback.</p></div></li>
+            <li class="reveal"><span>04</span><div><h3>Deliver the ideal</h3><p>You receive a polished outcome prepared for its real purpose.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="about section" id="about">
+        <div class="about__line" aria-hidden="true"></div>
+        <div class="container about__layout">
+          <div class="about__mark reveal" aria-hidden="true"><span>ES</span></div>
+          <div class="about__copy reveal">
+            <p class="eyebrow"><span></span> About El Studio</p>
+            <h2>Art asks <em>what if.</em><br />Engineering answers <em>how.</em></h2>
+            <p class="about__lead">
+              El Studio lives where those questions meet. We combine art, engineering,
+              and education to create designs that are thoughtful, functional, and emotionally resonant.
+            </p>
+            <p>
+              Whether the outcome is a manufactured part, a prototype, a visual story,
+              or a new skill, the goal stays the same: take the idea seriously and make it real beautifully.
+            </p>
+            <a class="text-link" href="#start">Tell us what you are imagining <span>↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq section" id="faq">
+        <div class="container faq__layout">
+          <div class="faq__intro reveal">
+            <p class="eyebrow eyebrow--dark"><span></span> Good to know</p>
+            <h2>Questions,<br /><em>answered.</em></h2>
+            <p>Still wondering about something? Send a note and we will figure it out together.</p>
+            <a class="text-link text-link--dark" href="mailto:el.studio.for.design@gmail.com">Ask another question <span>↗</span></a>
+          </div>
+          <div class="accordion reveal">
+            <article class="faq-item">
+              <button type="button" aria-expanded="false"><span>How long does a project take?</span><i></i></button>
+              <div class="faq-answer"><p>Timing depends on complexity and feedback rounds. A focused design task may take a few days; larger product or reverse-engineering projects are scoped with a clear timeline before work begins.</p></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false"><span>What should I send with my request?</span><i></i></button>
+              <div class="faq-answer"><p>Share the goal, approximate dimensions, references, required file format, deadline, and any manufacturing or brand constraints. Sketches and imperfect photos are welcome.</p></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false"><span>Can you provide 3D printing too?</span><i></i></button>
+              <div class="faq-answer"><p>Yes. We can prepare and optimize the model for printing, advise on process and material, and discuss printing availability based on the part and delivery location.</p></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false"><span>Is SOLIDWORKS training available online?</span><i></i></button>
+              <div class="faq-answer"><p>Yes. Sessions can be delivered online and tailored to your level, industry, or a real project you want to understand better.</p></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false"><span>How do revisions work?</span><i></i></button>
+              <div class="faq-answer"><p>Every quote defines the included feedback rounds. We review direction at key stages so revisions stay purposeful and there are no surprises at delivery.</p></div>
+            </article>
+            <article class="faq-item">
+              <button type="button" aria-expanded="false"><span>Which file formats can you deliver?</span><i></i></button>
+              <div class="faq-answer"><p>Depending on the service: SLDPRT, SLDASM, STEP, IGES, STL, 2D drawings, PDF, presentation, and common image formats. Tell us what your next step is and we will recommend the right package.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="start section section--dark" id="start">
+        <div class="start__orbit start__orbit--one" aria-hidden="true"></div>
+        <div class="start__orbit start__orbit--two" aria-hidden="true"></div>
+        <div class="container start__layout">
+          <div class="start__intro reveal">
+            <p class="eyebrow"><span></span> Start a project</p>
+            <h2>Let's give your idea<br /><em>a real shape.</em></h2>
+            <p>Three quick steps. We will use your answers to start a focused conversation.</p>
+            <div class="start__contact">
+              <span>Prefer to write directly?</span>
+              <a href="mailto:el.studio.for.design@gmail.com">el.studio.for.design@gmail.com</a>
+              <a href="https://wa.me/201149037653" target="_blank" rel="noreferrer">WhatsApp: +20 114 903 7653</a>
+            </div>
+          </div>
+
+          <form class="project-form reveal" id="project-form" novalidate>
+            <div class="form-progress" aria-label="Form progress">
+              <span class="is-active" data-progress="1">01</span><i></i>
+              <span data-progress="2">02</span><i></i>
+              <span data-progress="3">03</span>
+            </div>
+
+            <div class="form-step is-active" data-step="1">
+              <p class="form-step__label">STEP 01 / 03</p>
+              <h3>What can we help you create?</h3>
+              <div class="service-options">
+                <label><input type="radio" name="service" value="Engineering Design & CAD" required /><span>Engineering Design &amp; CAD</span></label>
+                <label><input type="radio" name="service" value="3D Printing" /><span>3D Printing</span></label>
+                <label><input type="radio" name="service" value="Graphic & Visual Design" /><span>Graphic &amp; Visual Design</span></label>
+                <label><input type="radio" name="service" value="SOLIDWORKS Training" /><span>SOLIDWORKS Training</span></label>
+                <label><input type="radio" name="service" value="Custom Creative Project" /><span>Custom Creative Project</span></label>
+              </div>
+              <p class="form-error" id="service-error" role="alert"></p>
+              <div class="form-actions"><span></span><button class="button button--pink next-step" type="button">Continue</button></div>
+            </div>
+
+            <div class="form-step" data-step="2">
+              <p class="form-step__label">STEP 02 / 03</p>
+              <h3>Tell us about the idea.</h3>
+              <label class="field field--full">
+                <span>Project details *</span>
+                <textarea name="details" rows="6" required placeholder="What are you imagining? What should the outcome do or communicate?"></textarea>
+              </label>
+              <div class="field-row">
+                <label class="field"><span>Desired deadline *</span><input type="date" name="deadline" required /></label>
+                <label class="field"><span>Budget range</span>
+                  <select name="budget">
+                    <option value="Not specified">Select range</option>
+                    <option value="Under EGP 2,000">Under EGP 2,000</option>
+                    <option value="EGP 2,000–5,000">EGP 2,000–5,000</option>
+                    <option value="EGP 5,000–10,000">EGP 5,000–10,000</option>
+                    <option value="EGP 10,000+">EGP 10,000+</option>
+                    <option value="Let's discuss">Let's discuss</option>
+                  </select>
+                </label>
+              </div>
+              <p class="form-error" id="details-error" role="alert"></p>
+              <div class="form-actions"><button class="back-step" type="button">← Back</button><button class="button button--pink next-step" type="button">Continue</button></div>
+            </div>
+
+            <div class="form-step" data-step="3">
+              <p class="form-step__label">STEP 03 / 03</p>
+              <h3>Where can we reach you?</h3>
+              <div class="field-row">
+                <label class="field"><span>Your name *</span><input type="text" name="name" autocomplete="name" required placeholder="Full name" /></label>
+                <label class="field"><span>Email *</span><input type="email" name="email" autocomplete="email" required placeholder="you@example.com" /></label>
+              </div>
+              <label class="field field--full"><span>WhatsApp number</span><input type="tel" name="phone" autocomplete="tel" placeholder="+20 ..." /></label>
+              <p class="form-note">Submitting opens your email app with the complete request ready to send. Nothing is marked sent until you send it.</p>
+              <p class="form-error" id="contact-error" role="alert"></p>
+              <div class="form-actions"><button class="back-step" type="button">← Back</button><button class="button button--pink" type="submit">Prepare email <span>↗</span></button></div>
+              <a class="whatsapp-submit" id="whatsapp-submit" href="#" target="_blank" rel="noreferrer">Or prepare the same request on WhatsApp</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__top">
+        <div>
+          <a class="brand brand--footer" href="#home"><span class="brand__mark">ES</span><span class="brand__wordmark">El Studio</span></a>
+          <p>From idea to ideal.</p>
+        </div>
+        <div class="footer__links">
+          <div><span>Explore</span><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a></div>
+          <div><span>Connect</span><a href="mailto:el.studio.for.design@gmail.com">Email</a><a href="https://wa.me/201149037653" target="_blank" rel="noreferrer">WhatsApp</a><a href="#start">Start a project</a></div>
+        </div>
+      </div>
+      <div class="container footer__bottom"><span>© <span id="year"></span> El Studio</span><span>Designed around ideas that matter.</span></div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
