@@ -111,11 +111,11 @@ h1 em, h2 em, h3 em { color: var(--pink); font-weight: inherit; }
 .section-heading--dark h2 em { color: var(--pink); }
 
 .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.service-card { position: relative; min-height: 420px; padding: 40px; overflow: hidden; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.18); transition: background .4s var(--ease), color .4s var(--ease); }
+.service-card { position: relative; min-height: 360px; padding: 44px; overflow: hidden; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.18); transition: background .4s var(--ease), color .4s var(--ease); }
 .service-card:hover { background: var(--ink); color: var(--ivory); }
-.service-card--featured { min-height: 500px; }
-.service-card--wide { grid-column: 1 / -1; display: grid; grid-template-columns: 170px 1fr auto; align-items: end; gap: 35px; min-height: 280px; }
-.service-card__number { margin-bottom: 90px; color: var(--rose); font-size: 10px; letter-spacing: .2em; }
+.service-card--featured { min-height: 360px; }
+.service-card--wide { grid-column: 1 / -1; display: grid; grid-template-columns: 80px 1fr auto; align-items: end; gap: 35px; min-height: 250px; }
+.service-card__number { margin-bottom: 48px; color: var(--rose); font-size: 10px; letter-spacing: .2em; }
 .service-card--wide .service-card__number { align-self: start; margin: 0; }
 .service-card h3 { max-width: 480px; margin-bottom: 18px; font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 400; line-height: 1.05; }
 .service-card h3 em { color: var(--rose); }
