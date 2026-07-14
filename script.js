@@ -174,3 +174,78 @@ const deadline = form?.elements.deadline;
 if (deadline) deadline.min = new Date().toISOString().split("T")[0];
 $("#year").textContent = new Date().getFullYear();
 updateWhatsApp();
+
+// Interactive stellar face — a lightweight 3D point sculpture rendered without external libraries.
+const faceCanvas = $("#stellar-face");
+if (faceCanvas) {
+  const ctx = faceCanvas.getContext("2d");
+  const points = [];
+  let width = 0, height = 0, dpr = 1, targetYaw = -.12, targetPitch = .02, yaw = -.12, pitch = .02;
+  const add = (x, y, z, size = 1, glow = 0) => points.push({ x, y, z, size, glow, phase: Math.random() * Math.PI * 2 });
+
+  // Head shell: denser at the front, with a tapered jaw and subtly extended cranium.
+  for (let i = 0; i < 1250; i++) {
+    const v = Math.acos(1 - 2 * Math.random());
+    const u = Math.random() * Math.PI * 2;
+    const sy = Math.cos(v), ring = Math.sin(v);
+    const jaw = .76 + .24 * Math.max(0, (sy + .12) / 1.12);
+    let x = Math.cos(u) * ring * 1.03 * jaw;
+    let y = sy * 1.42;
+    let z = Math.sin(u) * ring * (.9 + .1 * Math.max(0, sy));
+    if (z > 0) z += .11 * Math.exp(-x*x*5) * Math.exp(-(y+.02)*(y+.02)*2.5);
+    add(x, y, z, .65 + Math.random() * 1.15, Math.random() > .94 ? 1 : 0);
+  }
+
+  // Elegant neck emerging from the jaw.
+  for (let i = 0; i < 260; i++) {
+    const a = Math.random() * Math.PI * 2, t = Math.random();
+    const r = .48 + t * .1;
+    add(Math.cos(a) * r, -1.25 - t * .92, Math.sin(a) * r * .76, .7 + Math.random(), Math.random() > .96 ? 1 : 0);
+  }
+
+  const curve = (count, fn, size = 1.35) => {
+    for (let i = 0; i < count; i++) { const p = fn(i / (count - 1)); add(p[0], p[1], p[2], size, 1); }
+  };
+  // Brows and almond-shaped eyes sit just above the shell so the expression survives rotation.
+  [-1, 1].forEach(side => {
+    curve(48, t => { const x = side * (.18 + t * .52); return [x, .38 + .12 * Math.sin(t*Math.PI), .9 + .08*Math.sin(t*Math.PI)]; });
+    curve(66, t => { const a=t*Math.PI*2; return [side*.43 + Math.cos(a)*.25, .17 + Math.sin(a)*.105, .99 + .035*Math.cos(a)]; }, 1.2);
+    add(side*.43, .17, 1.045, 3.1, 1);
+  });
+  // Nose bridge, nostrils, lips and jaw seam.
+  curve(55, t => [.035*Math.sin(t*Math.PI*2), .32-t*.72, 1.04 + t*.18], 1.25);
+  curve(28, t => [(t-.5)*.38, -.43 + .045*Math.cos((t-.5)*Math.PI*2), 1.105-Math.abs(t-.5)*.12], 1.2);
+  curve(74, t => { const a=t*Math.PI*2; return [Math.cos(a)*.34, -.69 + Math.sin(a)*.075, 1.02 + .025*Math.cos(a)]; }, 1.35);
+  curve(90, t => { const a=Math.PI*.14+t*Math.PI*.72; return [Math.cos(a)*.84, -.41-Math.sin(a)*.92, .56+.17*Math.sin(a)]; }, 1.05);
+
+  const resizeFace = () => {
+    const rect = faceCanvas.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2); width = rect.width; height = rect.height;
+    faceCanvas.width = Math.round(width*dpr); faceCanvas.height = Math.round(height*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
+  };
+  const aim = (clientX, clientY) => {
+    const r=faceCanvas.getBoundingClientRect(); targetYaw=((clientX-r.left)/r.width-.5)*1.15; targetPitch=((clientY-r.top)/r.height-.5)*-.42;
+  };
+  faceCanvas.addEventListener("pointermove", e => aim(e.clientX,e.clientY));
+  faceCanvas.addEventListener("pointerleave", () => { targetYaw=-.12; targetPitch=.02; });
+  window.addEventListener("resize", resizeFace, { passive:true }); resizeFace();
+
+  const renderFace = time => {
+    yaw += (targetYaw-yaw)*.055; pitch += (targetPitch-pitch)*.055;
+    ctx.clearRect(0,0,width,height); const cy=Math.cos(yaw), sy=Math.sin(yaw), cp=Math.cos(pitch), sp=Math.sin(pitch);
+    const scale=Math.min(width*.235,height*.205), projected=[];
+    points.forEach(p => {
+      const x=p.x*cy+p.z*sy, z=-p.x*sy+p.z*cy, y=p.y*cp-z*sp, rz=p.y*sp+z*cp;
+      const perspective=3.7/(3.7-rz*.18);
+      projected.push({ x:width*.51+x*scale*perspective, y:height*.47-y*scale*perspective, z:rz, r:p.size*perspective, glow:p.glow, phase:p.phase });
+    });
+    projected.sort((a,b)=>a.z-b.z);
+    projected.forEach(p => {
+      const depth=Math.max(.13,Math.min(1,(p.z+1.25)/2.5)); const twinkle=.78+.22*Math.sin(time*.0016+p.phase);
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r*(p.glow?1.25:1),0,Math.PI*2);
+      ctx.fillStyle=p.glow?`rgba(255,218,235,${.58+.4*depth*twinkle})`:`rgba(242,166,196,${.16+.66*depth})`;
+      if(p.glow){ctx.shadowColor="#ffafd2";ctx.shadowBlur=8;} else ctx.shadowBlur=0; ctx.fill();
+    });
+    ctx.shadowBlur=0; requestAnimationFrame(renderFace);
+  };
+  requestAnimationFrame(renderFace);
+}
