@@ -86,45 +86,12 @@
             </div>
           </div>
 
-          <div class="hero-art reveal" aria-label="Abstract engineering drawing">
-            <svg viewBox="0 0 560 640" role="img" aria-label="A conceptual product drawn with construction lines">
-              <defs>
-                <linearGradient id="pinkStroke" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#ffd4e4" />
-                  <stop offset="1" stop-color="#f2a6c4" />
-                </linearGradient>
-                <filter id="softGlow">
-                  <feGaussianBlur stdDeviation="5" result="blur" />
-                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-                </filter>
-              </defs>
-              <g class="hero-art__construction" fill="none" stroke="rgba(255,248,251,.2)" stroke-width="1">
-                <circle cx="280" cy="320" r="226" />
-                <circle cx="280" cy="320" r="162" />
-                <line x1="34" y1="320" x2="526" y2="320" />
-                <line x1="280" y1="74" x2="280" y2="566" />
-                <path d="M86 190 474 450M86 450 474 190" />
-              </g>
-              <g class="hero-art__object" fill="none" stroke="url(#pinkStroke)" stroke-linecap="round">
-                <path d="M196 188C237 133 330 139 365 206c31 59 3 114-30 146-25 24-31 59-32 95h-48c-1-36-9-69-34-94-35-34-62-104-25-165Z" stroke-width="3" />
-                <path d="M230 458h98M238 478h82M249 497h60" stroke-width="3" />
-                <path d="M253 447c-2-60-10-97-41-125M306 447c1-59 11-98 43-125" stroke-width="1.5" />
-                <path d="M229 271c26-36 78-44 112-9" stroke-width="2" filter="url(#softGlow)" />
-              </g>
-              <g fill="#f2a6c4" class="hero-art__points">
-                <circle cx="196" cy="188" r="5" /><circle cx="365" cy="206" r="5" />
-                <circle cx="221" cy="353" r="4" /><circle cx="335" cy="352" r="4" />
-              </g>
-              <g class="hero-art__labels" fill="#fff8fb" font-family="DM Sans, sans-serif" font-size="10" letter-spacing="2">
-                <text x="54" y="183">CONCEPT / 01</text>
-                <text x="394" y="455">REFINE</text>
-                <text x="394" y="471">BUILD</text>
-                <text x="394" y="487">DELIVER</text>
-              </g>
-            </svg>
+          <div class="hero-art hero-art--face reveal" aria-label="Interactive three-dimensional robotic face made from points">
+            <canvas id="stellar-face" role="img" aria-label="A futuristic dotted female robotic head that follows the pointer"></canvas>
+            <div class="face-hud" aria-hidden="true"><i></i><span>NEURAL FORM / 01</span><i></i></div>
             <div class="hero-art__caption">
-              <span>CONCEPT STUDY</span>
-              <span>FORM + FUNCTION</span>
+              <span>MOVE TO EXPLORE</span>
+              <span>HUMAN × MACHINE</span>
             </div>
           </div>
         </div>
