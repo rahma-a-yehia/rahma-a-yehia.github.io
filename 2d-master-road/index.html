@@ -1,1 +1,144 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#061526"><meta name="description" content="2D Master Road — a seven-castle journey through Engineering Drawing, Technical Sales and DraftSight mastery."><title>2D Master Road</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23061526'/%3E%3Cpath d='M14 50h36V27l-6-6-6 6-6-12-6 12-6-6-6 6v23Z' fill='%230d3b2e' stroke='%23d6b56c' stroke-width='2'/%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></head><body><noscript>This learning game needs JavaScript enabled.</noscript><div id="root"><div style="min-height:100vh;display:grid;place-content:center;text-align:center;background:#061526;color:#f0d998;font-family:system-ui"><div style="font-size:4rem">♜</div><p>Opening the castle gates…</p></div></div><script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script><script src="./chunks/c1.js"></script><script src="./chunks/c2.js"></script><script src="./chunks/j1.js"></script><script src="./chunks/j2.js"></script><script src="./chunks/j3.js"></script><script src="./chunks/j4.js"></script><script src="./chunks/j5.js"></script><script>const inflate=async s=>{const b=Uint8Array.from(atob(s),c=>c.charCodeAt(0));if(!('DecompressionStream'in window))throw Error('Please open this game in a modern browser.');return new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream('gzip'))).text()};Promise.all([inflate((window.__mrc||[]).join('')),inflate((window.__mrj||[]).join(''))]).then(([c,j])=>{const st=document.createElement('style');st.textContent=c;document.head.append(st);const sc=document.createElement('script');sc.textContent=j;document.body.append(sc)}).catch(e=>{document.getElementById('root').innerHTML='<div style="padding:40px;color:white;background:#061526;min-height:100vh;font-family:system-ui"><h1>The gate could not open.</h1><p>'+e.message+'</p></div>'});</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#061526">
+  <meta name="description" content="2D Master Road — a seven-castle journey through Engineering Drawing, Technical Sales and DraftSight mastery.">
+  <title>2D Master Road</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23061526'/%3E%3Cpath d='M14 50h36V27l-6-6-6 6-6-12-6 12-6-6-6 6v23Z' fill='%230d3b2e' stroke='%23d6b56c' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style id="cinematic-v2">
+    :root{--night:#03101d;--navy:#061526;--forest:#0c3328;--gold:#d6b56c;--mist:rgba(214,229,226,.18)}
+    html,body{margin:0;min-height:100%;background:var(--night);overflow-x:hidden}
+    body{font-family:Inter,system-ui,sans-serif}
+    #root{min-height:100vh;isolation:isolate}
+    #root button,#root a,#root [role="button"]{transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,filter .28s ease!important}
+    #root button:hover,#root a:hover,#root [role="button"]:hover{transform:translateY(-2px);filter:brightness(1.06)}
+    #root button:active,#root [role="button"]:active{transform:translateY(0) scale(.975)}
+    .cinematic-intro{position:fixed;inset:0;z-index:99999;overflow:hidden;background:linear-gradient(#020b15 0%,#071c2d 48%,#091817 100%);perspective:900px;transition:opacity .8s ease,visibility .8s ease}
+    .cinematic-intro.done{opacity:0;visibility:hidden;pointer-events:none}
+    .cinematic-world{position:absolute;inset:-4%;transform-style:preserve-3d;animation:worldPush 6.4s cubic-bezier(.18,.73,.22,1) both;will-change:transform}
+    .cinematic-sky{position:absolute;inset:0;background:
+      radial-gradient(circle at 16% 19%,rgba(255,255,255,.95) 0 1px,transparent 1.8px),
+      radial-gradient(circle at 34% 11%,rgba(255,255,255,.7) 0 1px,transparent 1.5px),
+      radial-gradient(circle at 68% 18%,rgba(255,255,255,.86) 0 1px,transparent 1.6px),
+      radial-gradient(circle at 82% 9%,rgba(255,255,255,.68) 0 1px,transparent 1.5px),
+      radial-gradient(circle at 53% 29%,rgba(255,255,255,.72) 0 1px,transparent 1.4px),
+      linear-gradient(180deg,#010813,#061a2b 58%,#10272b 100%);background-size:260px 210px,310px 240px,280px 230px,360px 250px,300px 260px,auto;animation:skyDrift 28s linear infinite}
+    .moon{position:absolute;right:12%;top:9%;width:min(17vw,150px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 38% 34%,#fffde9 0 8%,#ebe6c9 42%,#aeb5ac 70%,rgba(182,198,195,.2) 72%);box-shadow:0 0 45px 15px rgba(220,236,220,.17),0 0 110px 35px rgba(163,201,191,.09);animation:moonFloat 8s ease-in-out infinite}
+    .cloud{position:absolute;height:14%;width:58%;filter:blur(20px);opacity:.14;background:radial-gradient(ellipse,rgba(220,232,229,.75),transparent 67%);animation:cloudMove 22s linear infinite}
+    .cloud.c1{top:18%;left:-28%}.cloud.c2{top:29%;left:32%;animation-duration:31s;animation-delay:-14s;opacity:.1}.cloud.c3{top:5%;left:3%;animation-duration:38s;animation-delay:-9s;opacity:.08}
+    .mountains{position:absolute;left:-5%;right:-5%;bottom:34%;height:34%;background:linear-gradient(145deg,transparent 0 19%,#0a1e25 19.3% 37%,transparent 37.3%),linear-gradient(215deg,transparent 0 25%,#10272c 25.3% 45%,transparent 45.3%),linear-gradient(155deg,transparent 0 31%,#07171d 31.3% 55%,transparent 55.3%);opacity:.94;filter:drop-shadow(0 -12px 20px rgba(1,7,10,.7))}
+    .castle-wrap{position:absolute;left:50%;bottom:34%;width:min(58vw,720px);height:min(36vw,430px);transform:translateX(-50%);filter:drop-shadow(0 22px 35px rgba(0,0,0,.7));animation:castleBreathe 5s ease-in-out infinite}
+    .castle{position:absolute;inset:0;background:linear-gradient(90deg,transparent 0 11%,#0a2522 11% 25%,transparent 25% 29%,#0d3029 29% 71%,transparent 71% 75%,#0a2522 75% 89%,transparent 89%);clip-path:polygon(11% 100%,11% 30%,17% 30%,17% 13%,22% 13%,22% 30%,31% 30%,31% 20%,38% 20%,38% 7%,45% 7%,45% 20%,55% 20%,55% 7%,62% 7%,62% 20%,69% 20%,69% 30%,78% 30%,78% 13%,83% 13%,83% 30%,89% 30%,89% 100%);border-bottom:4px solid #06110f}
+    .castle:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 14px,rgba(255,255,255,.025) 14px 15px),repeating-linear-gradient(90deg,transparent 0 28px,rgba(255,255,255,.018) 28px 29px)}
+    .castle-window{position:absolute;width:3.1%;height:7%;border-radius:50% 50% 5px 5px;background:#d8b461;box-shadow:0 0 12px #d8b461,0 0 28px rgba(225,187,92,.38);animation:windowGlow 2.8s ease-in-out infinite alternate}
+    .castle-window.w1{left:19%;top:44%}.castle-window.w2{left:35%;top:37%;animation-delay:-.8s}.castle-window.w3{left:48.5%;top:31%;animation-delay:-1.4s}.castle-window.w4{left:62%;top:37%;animation-delay:-.3s}.castle-window.w5{left:79%;top:44%;animation-delay:-1.8s}
+    .castle-door{position:absolute;left:44%;bottom:0;width:12%;height:22%;border-radius:50% 50% 0 0;background:linear-gradient(90deg,#020807,#162017 49%,#020807 51%,#172117);box-shadow:inset 0 0 0 2px rgba(214,181,108,.3),0 0 18px rgba(214,181,108,.16)}
+    .ground{position:absolute;left:-8%;right:-8%;bottom:-2%;height:49%;background:radial-gradient(ellipse at 50% 0,rgba(28,64,50,.55),transparent 42%),linear-gradient(#0b241c,#020a08 75%)}
+    .road{position:absolute;left:50%;bottom:-4%;width:70%;height:57%;transform:translateX(-50%);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);background:linear-gradient(90deg,#05090a,#182024 48%,#222b2e 50%,#11191b 53%,#040809);box-shadow:inset 0 0 90px rgba(0,0,0,.85)}
+    .road:before{content:"";position:absolute;left:49.45%;top:0;width:1.1%;height:100%;background:repeating-linear-gradient(180deg,rgba(239,221,166,.9) 0 7%,transparent 7% 16%);animation:laneRush .72s linear infinite;filter:drop-shadow(0 0 3px rgba(235,209,133,.4))}
+    .road:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 15%,rgba(255,255,255,.035) 41%,transparent 55%)}
+    .headlight-cone{position:absolute;left:50%;bottom:9%;width:47%;height:37%;transform:translateX(-50%);clip-path:polygon(43% 100%,57% 100%,100% 0,0 0);background:linear-gradient(0deg,rgba(255,240,180,.2),rgba(255,239,174,.018));filter:blur(7px);mix-blend-mode:screen;animation:headlightPulse 1.7s ease-in-out infinite}
+    .car{position:absolute;left:50%;bottom:5.5%;width:min(28vw,270px);height:min(13vw,125px);transform:translateX(-50%);animation:carDrive 6.2s cubic-bezier(.12,.65,.2,1) both,carSuspension .55s ease-in-out infinite alternate;filter:drop-shadow(0 22px 18px rgba(0,0,0,.8));z-index:7}
+    .car-body{position:absolute;left:6%;right:6%;bottom:12%;height:58%;border-radius:34% 34% 17% 17%/52% 52% 28% 28%;background:linear-gradient(180deg,#315a54 0,#123831 43%,#061b18 100%);box-shadow:inset 0 2px 1px rgba(255,255,255,.25),inset 0 -12px 18px rgba(0,0,0,.55)}
+    .car-cabin{position:absolute;left:24%;right:24%;top:3%;height:50%;clip-path:polygon(19% 0,81% 0,100% 100%,0 100%);background:linear-gradient(180deg,#1a3339,#050b0d 73%);border:2px solid rgba(164,190,180,.28)}
+    .car-light{position:absolute;bottom:29%;width:12%;height:13%;border-radius:50%;background:#fff0b5;box-shadow:0 0 12px #fff0b5,0 0 30px rgba(255,227,142,.7)}
+    .car-light.l{left:9%}.car-light.r{right:9%}
+    .wheel{position:absolute;bottom:0;width:18%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#253035 0 20%,#070a0b 22% 60%,#22292b 62% 72%,#050607 74%);animation:wheelSpin .5s linear infinite}
+    .wheel.l{left:14%}.wheel.r{right:14%}
+    .fog{position:absolute;left:-20%;right:-20%;height:28%;bottom:19%;background:radial-gradient(ellipse at center,rgba(211,229,222,.24),transparent 65%);filter:blur(22px);animation:fogSlide 12s linear infinite;z-index:8;pointer-events:none}.fog.f2{bottom:3%;opacity:.7;animation-duration:18s;animation-direction:reverse}
+    .cinematic-copy{position:absolute;left:50%;top:13%;width:min(90%,820px);transform:translateX(-50%);z-index:12;text-align:center;color:white;text-shadow:0 3px 25px rgba(0,0,0,.95);pointer-events:none}
+    .cinematic-kicker{font-size:clamp(.66rem,1.6vw,.9rem);letter-spacing:.46em;text-transform:uppercase;color:#d8c48e;opacity:0;animation:copyIn .85s .55s forwards}
+    .cinematic-title{margin:.55rem 0 .35rem;font-family:Cinzel,serif;font-size:clamp(2rem,7vw,5.8rem);font-weight:700;letter-spacing:.07em;line-height:.95;background:linear-gradient(180deg,#fff 0,#e8ddbd 45%,#b89754 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:translateY(14px) scale(.96);animation:titleIn 1.2s .9s cubic-bezier(.18,.8,.2,1) forwards}
+    .cinematic-subtitle{font-size:clamp(.78rem,1.8vw,1.05rem);letter-spacing:.18em;color:#d9e7e2;opacity:0;animation:copyIn .9s 1.5s forwards}
+    .arrival-status{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);z-index:15;color:#d9e7e2;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;opacity:.82}
+    .arrival-status:after{content:"";display:block;margin:.65rem auto 0;width:min(58vw,360px);height:2px;background:linear-gradient(90deg,transparent,#d6b56c,transparent);transform-origin:left;animation:progressLine 5.5s linear both}
+    .cinematic-skip{position:absolute;right:max(18px,env(safe-area-inset-right));top:max(18px,env(safe-area-inset-top));z-index:20;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(3,12,20,.42);backdrop-filter:blur(10px);color:#fff;padding:.65rem 1rem;font:600 .74rem Inter;letter-spacing:.08em;cursor:pointer}
+    .cinematic-skip:hover{background:rgba(214,181,108,.16);border-color:rgba(214,181,108,.65)}
+    .gate-transition{position:fixed;inset:0;z-index:99998;pointer-events:none;visibility:hidden}
+    .gate-transition.active{visibility:visible}
+    .gate-panel{position:absolute;top:0;width:51%;height:100%;background:linear-gradient(90deg,#020807,#0c2924 72%,#173c32);box-shadow:inset 0 0 0 1px rgba(214,181,108,.18),0 0 40px #000;transition:transform .48s cubic-bezier(.65,0,.35,1)}
+    .gate-panel:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 11%,rgba(214,181,108,.08) 11% 11.5%),repeating-linear-gradient(0deg,transparent 0 12%,rgba(0,0,0,.2) 12% 12.5%)}
+    .gate-panel.left{left:0;transform:translateX(-102%)}.gate-panel.right{right:0;transform:translateX(102%)}
+    .gate-transition.active .gate-panel.left,.gate-transition.active .gate-panel.right{transform:translateX(0)}
+    .gate-transition.opening .gate-panel.left{transform:translateX(-102%)}.gate-transition.opening .gate-panel.right{transform:translateX(102%)}
+    .gate-emblem{position:absolute;left:50%;top:50%;width:82px;aspect-ratio:1;transform:translate(-50%,-50%) scale(.6);border:2px solid #d6b56c;border-radius:50%;display:grid;place-items:center;color:#d6b56c;font-family:Cinzel;font-size:2rem;background:#071914;box-shadow:0 0 40px rgba(214,181,108,.22);opacity:0;transition:opacity .2s .25s,transform .35s .2s}
+    .gate-transition.active .gate-emblem{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    .gate-transition.opening .gate-emblem{opacity:0;transform:translate(-50%,-50%) scale(1.3)}
+    @keyframes worldPush{0%{transform:translateZ(-100px) scale(1.08)}70%{transform:translateZ(15px) scale(1.02)}100%{transform:translateZ(40px) scale(1)}}
+    @keyframes skyDrift{to{background-position:260px 0,-310px 0,280px 0,-360px 0,300px 0,0 0}}
+    @keyframes moonFloat{50%{transform:translateY(8px)}}
+    @keyframes cloudMove{from{transform:translateX(-15%)}to{transform:translateX(125%)}}
+    @keyframes castleBreathe{50%{transform:translateX(-50%) translateY(-3px);filter:drop-shadow(0 28px 42px rgba(0,0,0,.78))}}
+    @keyframes windowGlow{to{opacity:.62;box-shadow:0 0 7px #d8b461,0 0 18px rgba(225,187,92,.22)}}
+    @keyframes laneRush{to{background-position:0 90px}}
+    @keyframes headlightPulse{50%{opacity:.7;transform:translateX(-50%) scaleX(1.04)}}
+    @keyframes carDrive{0%{bottom:-19%;transform:translateX(-50%) scale(1.34)}48%{bottom:6%;transform:translateX(-50%) scale(1)}100%{bottom:7%;transform:translateX(-50%) scale(.98)}}
+    @keyframes carSuspension{to{margin-bottom:2px}}
+    @keyframes wheelSpin{to{transform:rotate(360deg)}}
+    @keyframes fogSlide{0%{transform:translateX(-12%)}50%{transform:translateX(12%)}100%{transform:translateX(-12%)}}
+    @keyframes copyIn{to{opacity:1}}
+    @keyframes titleIn{to{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes progressLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @media(max-width:650px){.castle-wrap{width:92vw;height:58vw;bottom:38%}.mountains{bottom:38%}.ground{height:43%}.road{height:49%;width:92%}.car{width:46vw;height:21vw;bottom:7%}.headlight-cone{width:78%;height:30%}.cinematic-copy{top:15%}.cinematic-title{font-size:clamp(2.2rem,12vw,4.2rem)}.arrival-status{bottom:7%}}
+    @media(prefers-reduced-motion:reduce){.cinematic-world,.cinematic-sky,.moon,.cloud,.castle-wrap,.castle-window,.road:before,.headlight-cone,.car,.wheel,.fog,.arrival-status:after{animation-duration:.01ms!important;animation-iteration-count:1!important}.cinematic-intro{transition-duration:.2s}}
+  </style>
+</head>
+<body>
+  <noscript>This learning game needs JavaScript enabled.</noscript>
+  <div id="root"><div style="min-height:100vh;display:grid;place-content:center;text-align:center;background:#061526;color:#f0d998;font-family:system-ui"><div style="font-size:4rem">♜</div><p>Opening the castle gates…</p></div></div>
+
+  <div class="cinematic-intro" id="cinematicIntro" aria-label="Cinematic arrival at 2D Master Road">
+    <div class="cinematic-world" id="cinematicWorld">
+      <div class="cinematic-sky"></div><div class="moon"></div>
+      <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+      <div class="mountains"></div>
+      <div class="castle-wrap"><div class="castle"><i class="castle-window w1"></i><i class="castle-window w2"></i><i class="castle-window w3"></i><i class="castle-window w4"></i><i class="castle-window w5"></i><div class="castle-door"></div></div></div>
+      <div class="ground"></div><div class="road"></div><div class="headlight-cone"></div>
+      <div class="car"><div class="car-cabin"></div><div class="car-body"></div><i class="car-light l"></i><i class="car-light r"></i><i class="wheel l"></i><i class="wheel r"></i></div>
+      <div class="fog"></div><div class="fog f2"></div>
+    </div>
+    <div class="cinematic-copy"><div class="cinematic-kicker">The journey continues</div><h1 class="cinematic-title">2D MASTER ROAD</h1><div class="cinematic-subtitle" id="cinematicSubtitle">Approaching the Gate of Lines</div></div>
+    <button class="cinematic-skip" id="cinematicSkip" type="button">Skip intro</button>
+    <div class="arrival-status">Entering the mastery road</div>
+  </div>
+
+  <div class="gate-transition" id="gateTransition" aria-hidden="true"><div class="gate-panel left"></div><div class="gate-panel right"></div><div class="gate-emblem">ⅡD</div></div>
+
+  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <script src="./chunks/c1.js"></script><script src="./chunks/c2.js"></script><script src="./chunks/j1.js"></script><script src="./chunks/j2.js"></script><script src="./chunks/j3.js"></script><script src="./chunks/j4.js"></script><script src="./chunks/j5.js"></script>
+  <script>
+    const inflate=async s=>{const b=Uint8Array.from(atob(s),c=>c.charCodeAt(0));if(!('DecompressionStream'in window))throw Error('Please open this game in a modern browser.');return new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream('gzip'))).text()};
+    Promise.all([inflate((window.__mrc||[]).join('')),inflate((window.__mrj||[]).join(''))]).then(([c,j])=>{const st=document.createElement('style');st.textContent=c;document.head.append(st);const sc=document.createElement('script');sc.textContent=j;document.body.append(sc)}).catch(e=>{document.getElementById('root').innerHTML='<div style="padding:40px;color:white;background:#061526;min-height:100vh;font-family:system-ui"><h1>The gate could not open.</h1><p>'+e.message+'</p></div>'});
+  </script>
+  <script>
+    (()=>{
+      const intro=document.getElementById('cinematicIntro');
+      const world=document.getElementById('cinematicWorld');
+      const skip=document.getElementById('cinematicSkip');
+      const subtitle=document.getElementById('cinematicSubtitle');
+      const gate=document.getElementById('gateTransition');
+      const returning=localStorage.getItem('mr-cinematic-seen')==='1';
+      const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(returning) subtitle.textContent='Welcome back — your last checkpoint is waiting';
+      const closeIntro=()=>{if(!intro||intro.classList.contains('done'))return;localStorage.setItem('mr-cinematic-seen','1');intro.classList.add('done');setTimeout(()=>intro.remove(),900)};
+      const introTime=reduced?350:returning?3600:6500;
+      const timer=setTimeout(closeIntro,introTime);
+      skip?.addEventListener('click',()=>{clearTimeout(timer);closeIntro()});
+      let tx=0,ty=0,raf=0;
+      const applyParallax=()=>{raf=0;if(!world||reduced)return;world.style.transform=`translate3d(${tx}px,${ty}px,0) scale(1.015)`};
+      window.addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth-.5)*-10;ty=(e.clientY/innerHeight-.5)*-6;if(!raf)raf=requestAnimationFrame(applyParallax)},{passive:true});
+      const transition=()=>{if(!gate||gate.classList.contains('active'))return;gate.classList.remove('opening');gate.classList.add('active');setTimeout(()=>gate.classList.add('opening'),470);setTimeout(()=>gate.classList.remove('active','opening'),980)};
+      document.addEventListener('click',e=>{const el=e.target.closest('button,a,[role="button"]');if(!el||el.id==='cinematicSkip')return;const t=(el.textContent||'').trim().toLowerCase();if(/begin|continue|enter|castle|room|hall|chamber|forge|journey|start|next|open/.test(t))transition()},true);
+      const observer=new MutationObserver(()=>{document.querySelectorAll('#root button,#root a,#root [role="button"]').forEach(el=>{if(el.dataset.cinematicReady)return;el.dataset.cinematicReady='1';el.addEventListener('pointerenter',()=>el.style.setProperty('--cinematic-hover','1'),{passive:true})})});
+      observer.observe(document.getElementById('root'),{childList:true,subtree:true});
+      setTimeout(()=>observer.disconnect(),20000);
+    })();
+  </script>
+</body>
+</html>
