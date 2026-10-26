@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10162e">
+  <meta name="description" content="A little place to breathe, made for MORFY.">
+  <title>A Little Place for MORFY | Somewhere Soft</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <div id="atmosphere" aria-hidden="true"></div>
+  <div id="scene" class="scene scene-welcome" aria-hidden="true">
+    <div id="scenePicture" class="scene-picture"></div>
+    <video id="sceneVideo" class="scene-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" aria-hidden="true"></video>
+    <div class="vignette"></div>
+    <div id="stars" class="stars"></div>
+    <div id="moon" class="moon"></div>
+    <div id="fireflyField" aria-hidden="true"></div>
+    <canvas id="waterCanvas"></canvas>
+    <div id="underwaterLens" aria-hidden="true"><div class="surface-sky"><div class="surface-moon"></div><div class="surface-stars"></div></div><div class="ripple-surface"></div></div>
+    <div id="grassFront" class="grass-front" aria-hidden="true"></div>
+  </div>
+
+  <header id="topbar" class="topbar hidden">
+    <button id="homeBtn" class="iconbutton glass" type="button" aria-label="Choose another place"><span>⌂</span></button>
+    <div class="brand">Somewhere <i>Soft</i><span class="brand-sep">·</span><small>MORFY</small></div>
+    <button id="collectionBtn" class="iconbutton glass" type="button" aria-label="Open your flowers"><span>✿</span><em id="collectionCount">0/6</em></button>
+  </header>
+
+  <main id="pages">
+    <section id="welcome" class="page welcome-page active">
+      <div class="intro-top"><span class="eyebrow">A SMALL WORLD, MADE JUST FOR YOU</span></div>
+      <div class="welcome-content">
+        <span class="tiny-stars">✦ &nbsp; ✧ &nbsp; ✦</span>
+        <h1>Hey, <em>MORFY.</em></h1>
+        <p>I made you a little something.<br>Not because it's a special day.<br>Just because you deserve something beautiful,<br>even on an ordinary one.</p>
+        <button class="btn btn-primary btn-large" id="enterBtn" type="button">A little something? <span>↗</span></button>
+        <div class="welcome-note">Best enjoyed with a quiet moment and a little curiosity</div>
+      </div>
+    </section>
+
+    <section id="introCat" class="page intro-cat-page" aria-labelledby="catIntroTitle">
+      <div class="center-panel intro-dialogue glass">
+        <div class="cat-avatar large" id="introCatAvatar" aria-hidden="true">🐈</div>
+        <div class="eyebrow">YOUR TINY TOUR GUIDE</div>
+        <h2 id="catIntroTitle">Well, hello there.</h2>
+        <p id="catIntroLine">I was wondering when you'd arrive.</p>
+        <button id="catNextBtn" type="button" class="btn btn-primary">Nice to meet you, little cat <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="menu" class="page menu-page">
+      <div class="menu-head"><div class="eyebrow">WELCOME TO YOUR LITTLE CORNER</div><h2 id="menuTitle">Where would you like<br>to go, <em>MORFY?</em></h2><p>Every little corner has something different to offer.<br>Choose whatever feels right.</p></div>
+      <div class="destination-grid">
+        <button class="destination" data-mode="garden" style="--cardimage:url('assets/scenes/garden.jpg')"><span class="destination-tag">01 · FOR A LITTLE COLOR</span><span class="destination-name">The Garden <b>↗</b></span><span class="destination-desc">Follow the cat and find six little stories.</span></button>
+        <button class="destination" data-mode="sky" style="--cardimage:url('assets/scenes/sky.jpg')"><span class="destination-tag">02 · FOR A LITTLE STILLNESS</span><span class="destination-name">The Starry Sky <b>↗</b></span><span class="destination-desc">Lie among wildflowers and watch the stars.</span></button>
+        <button class="destination" data-mode="sea" style="--cardimage:url('assets/scenes/sea.jpg')"><span class="destination-tag">03 · FOR A LITTLE FREEDOM</span><span class="destination-name">The Sea <b>↗</b></span><span class="destination-desc">Dive into quiet water and swim with the fish.</span></button>
+        <button class="destination" data-mode="under" style="--cardimage:url('assets/scenes/underwater.jpg')"><span class="destination-tag">04 · FOR A LITTLE WONDER</span><span class="destination-name">Beneath the Waves <b>↗</b></span><span class="destination-desc">Discover the sky from another world.</span></button>
+      </div>
+      <div class="menu-footer"><span id="menuProgress">✿ Your collection: 0 of 6 flowers</span><button id="goldenShortcut" class="subtle-link hidden" type="button">See your golden flower ✧</button></div>
+    </section>
+
+    <section id="garden" class="page play-page garden-page">
+      <div class="scene-title compact"><div class="eyebrow">01 / SIX LITTLE PIECES OF LIGHT</div><h2>The Garden</h2><p id="gardenIntro">Look at all these flowers! Each one has something to tell you.</p></div>
+      <div class="garden-hud"><div class="glass garden-count"><span>✿</span><div><strong id="gardenCount">0 / 6</strong><small>flowers found</small></div></div><button id="guideBtn" class="btn btn-ghost btn-sm" type="button">Follow the cat <span>↗</span></button></div>
+      <div id="gardenField" class="garden-field" aria-label="Garden exploration area">
+        <div id="walkableZone"><div id="playerAvatar" class="little-explorer" aria-hidden="true"><span>●</span><span>▰</span></div><div id="catSprite" class="garden-cat" aria-hidden="true">🐈</div></div>
+        <button class="flower-hotspot" data-flower="daisy" style="--x:22%;--y:35%" aria-label="Discover White Daisy"><img src="assets/flowers/daisy.svg" alt=""></button>
+        <button class="flower-hotspot" data-flower="rose" style="--x:78%;--y:31%" aria-label="Discover Pink Rose"><img src="assets/flowers/rose.svg" alt=""></button>
+        <button class="flower-hotspot" data-flower="lavender" style="--x:39%;--y:55%" aria-label="Discover Lavender"><img src="assets/flowers/lavender.svg" alt=""></button>
+        <button class="flower-hotspot" data-flower="sunflower" style="--x:84%;--y:61%" aria-label="Discover Sunflower"><img src="assets/flowers/sunflower.svg" alt=""></button>
+        <button class="flower-hotspot" data-flower="tulip" style="--x:18%;--y:78%" aria-label="Discover Red Tulip"><img src="assets/flowers/tulip.svg" alt=""></button>
+        <button class="flower-hotspot" data-flower="hydrangea" style="--x:64%;--y:81%" aria-label="Discover Blue Hydrangea"><img src="assets/flowers/hydrangea.svg" alt=""></button>
+        <button class="firefly" data-firefly="0" style="--x:12%;--y:48%" aria-label="Catch a firefly">✦</button>
+        <button class="firefly" data-firefly="1" style="--x:90%;--y:43%" aria-label="Catch a firefly">✦</button>
+        <button class="firefly" data-firefly="2" style="--x:51%;--y:29%" aria-label="Catch a firefly">✦</button>
+        <button class="firefly" data-firefly="3" style="--x:5%;--y:88%" aria-label="Catch a firefly">✦</button>
+        <button class="firefly" data-firefly="4" style="--x:93%;--y:90%" aria-label="Catch a firefly">✦</button>
+        <button id="bench" class="bench" aria-label="Sit with the cat">♧ <span>Sit with the cat</span></button>
+      </div>
+      <div class="garden-footnote">Tap any flower, follow the cat, or discover the little lights ✦</div>
+    </section>
+
+    <section id="sky" class="page play-page sky-page">
+      <div id="skyBefore" class="moment-overlay"><div class="eyebrow">02 / A MOMENT JUST FOR YOU</div><h2>The sky has been<br>here all along.</h2><p>Sometimes we just forget to look up.</p><button id="lieDownBtn" type="button" class="btn btn-primary">Lie down among the flowers <span>✧</span></button></div>
+      <div id="skyResting" class="resting-ui hidden"><div class="rest-topline">YOU CAN STAY HERE AS LONG AS YOU LIKE</div><div class="rest-message" id="skyRestMessage">Nothing to accomplish. Just the sky above you.</div><div class="rest-controls"><button id="voicePlay" class="btn btn-primary" type="button">♫ Listen to Rahma</button><button id="voicePause" class="btn btn-ghost hidden" type="button">Pause</button><button id="voiceReplay" class="btn btn-ghost hidden" type="button">↺ Hear it again</button><button id="skyGetUp" class="btn btn-light" type="button">Get up</button></div><div class="voice-caption" id="voiceCaption" role="status" aria-live="polite"></div></div>
+    </section>
+
+    <section id="sea" class="page play-page sea-page"><div class="scene-title"><div class="eyebrow">03 / LET THE WORLD FEEL LIGHTER</div><h2>The Sea</h2><p>Some adventures don't need a destination.</p></div><div class="sea-actions"><div id="seaDialogue" class="cat-bubble glass"><span>🐈</span><p>Well, this is where I stop. I have a complicated relationship with water. I'll watch your things.</p></div><button id="jumpBtn" class="btn btn-primary" type="button">Jump in <span>≈</span></button></div><div id="seaSwimming" class="sea-swimming hidden"><div id="seaText" class="sea-poetry glass">Looks like you've made some new friends.</div><div class="sea-bottom"><button id="swimAroundBtn" class="btn btn-ghost" type="button">Swim around</button><button id="seaFloatBtn" class="btn btn-primary" type="button">Float on the waves</button><button id="diveBtn" class="btn btn-ghost" type="button">Look beneath the waves ↓</button></div></div></section>
+
+    <section id="under" class="page play-page under-page"><div class="scene-title under-title"><div class="eyebrow">04 / ANOTHER WAY TO SEE THE SKY</div><h2>Beneath the Waves</h2><p>Have you ever wondered how the sky looks from another world?</p></div><div class="under-actions"><button id="lookUpBtn" class="btn btn-primary" type="button">Look up at the sky ↑</button><button id="fishBtn" class="btn btn-ghost" type="button">Follow the fish</button><button id="underQuietBtn" class="btn btn-ghost" type="button">Just watch</button></div><div id="underPhrase" class="under-phrase hidden">Same sky. <em>Different point of view.</em></div><button id="backSeaBtn" class="btn btn-light under-back" type="button">Back to swimming ↑</button></section>
+  </main>
+
+  <nav id="dock" class="dock glass hidden" aria-label="Choose a peaceful place">
+    <button type="button" data-mode="garden" aria-label="Garden"><b>✿</b><small>Garden</small></button>
+    <button type="button" data-mode="sky" aria-label="Sky"><b>☾</b><small>Sky</small></button>
+    <button type="button" data-mode="sea" aria-label="Sea"><b>≈</b><small>Sea</small></button>
+    <button type="button" data-mode="under" aria-label="Underwater"><b>◈</b><small>Below</small></button>
+  </nav>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalHeading"><div class="modal-shade" data-close></div><div class="modal-card glass"><button id="modalX" class="modal-close" type="button" aria-label="Close">×</button><div id="modalContent"></div></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="screenCurtain" class="screen-curtain" aria-hidden="true"></div>
+</div>
+<audio id="rahmaAudio" preload="none" src="assets/audio/rahma-original.m4a"></audio>
+<script src="app.js"></script>
+</body>
+</html>
